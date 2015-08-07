@@ -14,18 +14,17 @@ import org.apache.spark.sql.SQLContext;
 public class SparkUtils {
 
 
-    private static SparkContext getSparkContext() {
-        return getSparkContext("Simple Application");
+    public static SparkConf getSimpleConfig() {
+
+        return getSimpleConfig("Simple Application");
     }
 
-    private static SparkContext getSparkContext(String appName) {
-
-
+    public static SparkConf getSimpleConfig(String appName){
         Logger.getLogger("org").setLevel(Level.ERROR);
         Logger.getLogger("akka").setLevel(Level.ERROR);
 
         int cores = Runtime.getRuntime().availableProcessors();
-        System.out.println("Available cores: " + cores);
+        System.out.println("SparkUtils: Available cores: " + cores);
         SparkConf conf = new SparkConf()
                 .setMaster("local[" + cores + "]")
                 .setAppName(appName)
@@ -33,12 +32,47 @@ public class SparkUtils {
                 .set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
                 .set("spark.kryoserializer.buffer.max", "1g");
 
+        return conf;
+    }
+
+    public static SparkContext getSparkContext() {
+
+        SparkConf conf = getSimpleConfig();
+
         SparkContext sc = new SparkContext(conf);
 
         return sc;
     }
 
-    private static SQLContext getSqlContext(SparkContext sc) {
+    public static SparkContext getSparkContext(String appName) {
+
+        SparkConf conf = getSimpleConfig(appName);
+
+        SparkContext sc = new SparkContext(conf);
+
+        return sc;
+    }
+
+    public static JavaSparkContext getJavaSparkContext() {
+
+        SparkConf conf = getSimpleConfig();
+
+        JavaSparkContext sc = new JavaSparkContext(conf);
+
+        return sc;
+    }
+
+
+    public static JavaSparkContext getJavaSparkContext(String appName) {
+
+        SparkConf conf = getSimpleConfig(appName);
+
+        JavaSparkContext sc = new JavaSparkContext(conf);
+
+        return sc;
+    }
+
+    public static SQLContext getSqlContext(SparkContext sc) {
 
         SQLContext sqlContext = new SQLContext(sc);
 
@@ -49,7 +83,7 @@ public class SparkUtils {
         return sqlContext;
     }
 
-    private static SQLContext getSqlContext(JavaSparkContext sc) {
+    public static SQLContext getSqlContext(JavaSparkContext sc) {
 
         SQLContext sqlContext = new SQLContext(sc);
 
