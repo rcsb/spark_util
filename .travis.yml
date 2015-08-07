@@ -2,3 +2,12 @@ language: java
 sudo: false
 jdk:
   - oraclejdk8
+notifications:
+  email:
+    recipients:
+      - andreas.prlic@rcsb.org
+      - peter.rose@rcsb.org
+    on_success: change
+    on_failure: always
+
+  
