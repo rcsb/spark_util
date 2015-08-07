@@ -58,9 +58,7 @@ public class DataFrameToDelimitedFileWriter {
             StringBuilder sb = new StringBuilder();
 
             for (int i = 0; i < r.length(); i++) {
-                if (r.getAs(i) == null) {
-                    sb.append("null");
-                } else {
+                if (r.getAs(i) != null) {
                     sb.append(r.getAs(i).toString());
                 }
                 if (i < r.length()-1) {
