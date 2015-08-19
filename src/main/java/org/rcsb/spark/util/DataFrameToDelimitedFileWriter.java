@@ -20,11 +20,11 @@ public class DataFrameToDelimitedFileWriter {
      * @throws FileNotFoundException
      */
     public static void writeCsv(String fileName, DataFrame dataFrame) throws FileNotFoundException {
-        write(fileName, "\n", dataFrame);
+        write(fileName, ",", dataFrame);
     }
 
     /**
-     * Write a Spark DataFrame to a tab separated value file
+     * Writes a Spark DataFrame to a tab separated value file
      * @param fileName
      * @param dataFrame
      * @throws FileNotFoundException
