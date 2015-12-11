@@ -1,19 +1,16 @@
 package org.rcsb.spark.util;
 
-import org.apache.spark.SparkConf;
-import org.apache.spark.SparkContext;
-
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.spark.api.java.JavaSparkContext;
-import org.apache.spark.sql.Column;
-import org.apache.spark.sql.DataFrame;
-import org.apache.spark.sql.SQLContext;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.spark.SparkConf;
+import org.apache.spark.SparkContext;
+import org.apache.spark.api.java.JavaSparkContext;
+import org.apache.spark.sql.DataFrame;
+import org.apache.spark.sql.SQLContext;
 
 /**
  * Created by andreas on 8/7/15.
