@@ -33,6 +33,7 @@ public class SparkUtils {
                 .setMaster("local[" + cores + "]")
                 .setAppName(appName)
                 .set("spark.driver.maxResultSize", "4g")
+                .set("spark.ui.showConsoleProgress", "false")
                 .set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
                 .set("spark.kryoserializer.buffer.max", "1g");
 
